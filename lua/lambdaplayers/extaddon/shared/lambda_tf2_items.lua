@@ -88,8 +88,8 @@ LAMBDA_TF2.InventoryItems = {
     },
     [ "tf2_bonk" ] = {
         Condition = function( lambda )
-            local retreatEnt = lambda.l_RetreatTarget
-            return ( lambda:IsPanicking() and ( !LambdaIsValid( retreatEnt ) or !lambda:CanSee( retreatEnt ) or !lambda:IsInRange( retreatEnt, 1000 ) ) )
+            local ene = lambda:GetEnemy()
+            return ( lambda:IsPanicking() and ( !LambdaIsValid( ene ) or !lambda:CanSee( ene ) or !lambda:IsInRange( ene, 1000 ) ) )
         end,
         Cooldown = 30
     },
@@ -149,8 +149,15 @@ LAMBDA_TF2.InventoryItems = {
         PrettyName = "B.A.S.E. Jumper",
         WorldModel = "models/lambdaplayers/tf2/items/base_jumper.mdl",
         WearsOnBack = true,
-        Initialize = function( lambda, mdlEnt ) lambda.l_TF_ParachuteModel = mdlEnt end,
-        OnUnequip = function( lambda ) lambda.l_TF_ParachuteModel = NULL end
+        Initialize = function( lambda, mdlEnt ) 
+            lambda.l_TF_ParachuteModel = mdlEnt
+            lambda.l_TF_ParachuteDeathDropHeight = lambda.loco:GetDeathDropHeight() 
+            lambda.loco:SetDeathDropHeight( 3000 ) 
+        end,
+        OnUnequip = function( lambda ) 
+            lambda.l_TF_ParachuteModel = NULL 
+            lambda.loco:SetDeathDropHeight( lambda.l_TF_ParachuteDeathDropHeight ) 
+        end
     },
     [ "tf2_chargintarge" ] = {
         IsWeapon = false,

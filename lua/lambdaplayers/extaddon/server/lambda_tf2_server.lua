@@ -255,10 +255,14 @@ function LAMBDA_TF2:TurnIntoStatue( ragdoll, mat, physProp )
         if physProp then SetPhysProp( nil, ragdoll, physBone, nil, physProp ) end
     end
 
-    for _, child in ipairs( ragdoll:GetChildren() ) do
-        if !IsValid( child ) or child:GetNoDraw()  then continue end
-        child:SetMaterial( mat )
-    end
+    SimpleTimer( 0, function()
+        if !IsValid( ragdoll ) then return end
+        
+        for _, child in ipairs( ragdoll:GetChildren() ) do
+            if !IsValid( child ) then continue end
+            child:SetMaterial( mat )
+        end
+    end )
 
     ragdoll:RemoveInternalConstraint( -1 )
     ragdoll:SetMaterial( mat )
@@ -1418,7 +1422,7 @@ function LAMBDA_TF2:LambdaMedigunAI( lambda )
 
             local healTarget = lambda.l_TF_Medic_HealTarget
             local targetDead = ( !IsValid( healTarget ) or !LAMBDA_TF2:IsValidCharacter( healTarget ) )
-            if targetDead or random( 1, ( ( lambda.l_TF_Medigun_ChargeReleased or healTarget.IsLambdaPlayer and ( healTarget:InCombat() or healTarget.l_TF_HasEdibles or healTarget.l_TF_IsUsingItem ) ) and 350 or 100 ) ) == 1 then
+            if targetDead or random( 1, ( ( lambda.l_TF_Medigun_ChargeReleased or healTarget.IsLambdaPlayer and ( healTarget:InCombat() or healTarget:IsPanicking() or healTarget:GetState() == "FindTarget" or healTarget.l_TF_HasEdibles or healTarget.l_TF_IsUsingItem ) ) and 350 or 100 ) ) == 1 then
                 if CurTime() > lambda.l_TF_Medic_TargetSearchT then
                     lambda.l_TF_Medic_TargetSearchT = ( CurTime() + 1.0 )
 
