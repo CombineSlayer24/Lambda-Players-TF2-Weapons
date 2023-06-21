@@ -127,6 +127,10 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                 if chargeStartTime > 0.2 and tr.HitGroup == HITGROUP_HEAD then 
                     dmginfo:SetDamageCustom( TF_DMG_CUSTOM_HEADSHOT ) 
                 end
+
+                if GetConVar( "lambdaplayers_tf2_alwayscrit" ):GetBool() then
+                    dmginfo:SetDamageCustom( TF_DMG_CUSTOM_HEADSHOT ) 
+                end
             end
 
             wepent:FireBullets( bulletTbl )
