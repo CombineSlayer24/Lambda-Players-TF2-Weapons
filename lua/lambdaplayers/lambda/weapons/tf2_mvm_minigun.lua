@@ -1,5 +1,5 @@
 table.Merge( _LAMBDAPLAYERSWEAPONS, {
-    tf2_minigun_mvm = {
+    tf2_mvm_minigun = {
         model = "models/lambdaplayers/tf2/weapons/w_minigun.mdl",
         origin = "Team Fortress 2",
         prettyname = "MvM Minigun",

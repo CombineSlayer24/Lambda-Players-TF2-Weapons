@@ -65,6 +65,7 @@ CreateLambdaConvar( "lambdaplayers_tf2_randomrechargeablechance", 10, true, fals
 CreateLambdaConvar( "lambdaplayers_tf2_inventoryitemlimit", 1, true, false, false, "How many items can Lambda Player carry in their inventory?", 0, 4, { type = "Slider", decimals = 0, name = "Inventory Limit", category = "TF2 Stuff" } )
 CreateLambdaConvar( "lambdaplayers_tf2_wearonlyonebackpack", 1, true, false, false, "If Lambda Players are allowed to have only one item that is wearable on their back", 0, 1, { type = "Bool", name = "Wear Only One Backpack", category = "TF2 Stuff" } )
 CreateLambdaConvar( "lambdaplayers_tf2_randomizeitemsonrespawn", 0, true, false, false, "If not zero, determines the chance that the Lambda Player's items will be randomized on its respawn", 0, 100, { type = "Slider", decimals = 0, name = "Random Items On Respawn Chance", category = "TF2 Stuff" } )
+CreateLambdaConvar( "lambdaplayers_tf2_allowmvmweapons", 0, true, false, false, "If Lambda Player's should use MvM robot weapons.", 0, 1, { type = "Bool", name = "Use MvM Weapons", category = "TF2 Stuff" } )
 local objectorIncludePfps = CreateLambdaConvar( "lambdaplayers_tf2_objectorincludepfps", 0, true, false, false, "If Lambda Players using The Conscientious Objector should also use Lambda Profile Pictures as their image?", 0, 1, { type = "Bool", name = "Objector Includes PFPs", category = "TF2 Stuff" } )
 
 ---

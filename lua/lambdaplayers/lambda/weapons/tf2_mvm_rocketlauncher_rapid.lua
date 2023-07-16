@@ -16,7 +16,7 @@ local reloadData = {
 }
 
 table.Merge( _LAMBDAPLAYERSWEAPONS, {
-    tf2_rocketlaunche_rapidfire_mvm = {
+    tf2_mvm_rocketlauncher_rapidfire  = {
         model = "models/lambdaplayers/tf2/weapons/w_rocket_launcher.mdl",
         origin = "Team Fortress 2",
         prettyname = "MvM Rapid Fire Rocket Launcher",
