@@ -629,8 +629,15 @@ local function OnPlayerSpawn( ply, transition )
     if IsValid( ragdoll ) then ragdoll:Remove() end
 end
 
+local function LambdaAIInitialize( lambda )
+    if GetConVar( "lambdaplayers_tf2_spawnonfullcharge" ):GetBool() then 
+        LAMBDA_TF2:SpawnWithFullCharge( lambda )
+    end
+end
+
 hook.Add( "PlayerDeath", "LambdaTF2_OnPlayerDeath", OnPlayerDeath )
 hook.Add( "PlayerSpawn", "LambdaTF2_OnPlayerSpawn", OnPlayerSpawn )
+hook.Add( "LambdaAIInitialize", "LambdaTF2_OnLambdaAIInitialize", LambdaAIInitialize )
 hook.Add( "EntityTakeDamage", "LambdaTF2_OnEntityTakeDamage", OnEntityTakeDamage )
 hook.Add( "PostEntityTakeDamage", "LambdaTF2_OnPostEntityTakeDamage", OnPostEntityTakeDamage )
 hook.Add( "Think", "LambdaTF2_OnServerThink", OnServerThink )
@@ -1168,6 +1175,10 @@ end
 
 local function OnLambdaRespawn( lambda )
     table_Empty( lambda.l_TF_DamageEvents )
+
+    if GetConVar( "lambdaplayers_tf2_spawnonfullcharge" ):GetBool() then 
+        LAMBDA_TF2:SpawnWithFullCharge( lambda )
+    end
 
     if lambda.l_TF_RevengeCrits > 0 and lambda:CanEquipWeapon( "tf2_frontierjustice" ) then 
         lambda:SwitchWeapon( "tf2_frontierjustice" )

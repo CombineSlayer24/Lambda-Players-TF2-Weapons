@@ -1113,6 +1113,26 @@ function LAMBDA_TF2:RecordDamageEvent( attacker, dmginfo, kill, victimPrevHealth
     }
 end
 
+-- MvM BOT attribute, refills certain buff items
+function LAMBDA_TF2:SpawnWithFullCharge( ent )
+    if ent.IsLambdaPlayer then
+        ent.l_TF_RageMeter = 100
+        ent.l_TF_Medigun_ChargeMeter = 100
+        ent.l_TF_MmmphMeter = 100
+
+        if random( 1, 100 ) <= ent:GetVoiceChance() then
+            local rndReact = random( 3 )
+            if rndReact == 1 then
+                ent:PlaySoundFile( "laugh" )
+            elseif rndReact == 2 then
+                ent:PlaySoundFile( "taunt" )
+            else
+                ent:PlaySoundFile( "assist" )
+            end
+        end
+    end
+end
+
 function LAMBDA_TF2:AddCritBoost( ent, name, critType, duration )
     ent.l_TF_CritBoosts[ name ] = {
         CritType = critType,
