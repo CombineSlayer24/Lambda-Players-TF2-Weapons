@@ -86,6 +86,58 @@ LAMBDA_TF2.InventoryItems = {
         end,
         Cooldown = 5.1
     },
+    [ "tf2_custom_fireaxe_thrown" ] = {
+        Condition = function( lambda )
+            local ene = lambda:GetEnemy()
+            local attackDist = lambda.l_CombatAttackRange
+            if !attackDist then attackDist = ( lambda.l_HasMelee and 70 or 1000 ) end
+            return ( random( 1, 10 ) == 1 and lambda:InCombat() and lambda:CanSee( ene ) and lambda:IsInRange( ene, 1500 ) and ( lambda.l_Clip == 0 or lambda:GetIsReloading() or !lambda:IsInRange( ene, attackDist ) or random( 1, 10 ) == 1 ) )
+        end,
+        SwitchBackCond = function( lambda )
+            local ene = lambda:GetEnemy()
+            return ( lambda:InCombat() and !lambda:CanSee( ene ) and !lambda:IsInRange( ene, 500 ) )
+        end,
+        Cooldown = 8
+    },
+    [ "tf2_custom_critacola_thrown" ] = {
+        Condition = function( lambda )
+            local ene = lambda:GetEnemy()
+            local attackDist = lambda.l_CombatAttackRange
+            if !attackDist then attackDist = ( lambda.l_HasMelee and 70 or 1000 ) end
+            return ( random( 1, 10 ) == 1 and lambda:InCombat() and lambda:CanSee( ene ) and lambda:IsInRange( ene, 1500 ) and ( lambda.l_Clip == 0 or lambda:GetIsReloading() or !lambda:IsInRange( ene, attackDist ) or random( 1, 10 ) == 1 ) )
+        end,
+        SwitchBackCond = function( lambda )
+            local ene = lambda:GetEnemy()
+            return ( lambda:InCombat() and !lambda:CanSee( ene ) and !lambda:IsInRange( ene, 500 ) )
+        end,
+        Cooldown = 10
+    },
+    [ "tf2_custom_saxxy_thrown" ] = {
+        Condition = function( lambda )
+            local ene = lambda:GetEnemy()
+            local attackDist = lambda.l_CombatAttackRange
+            if !attackDist then attackDist = ( lambda.l_HasMelee and 70 or 1000 ) end
+            return ( random( 1, 10 ) == 1 and lambda:InCombat() and lambda:CanSee( ene ) and lambda:IsInRange( ene, 1500 ) and ( lambda.l_Clip == 0 or lambda:GetIsReloading() or !lambda:IsInRange( ene, attackDist ) or random( 1, 10 ) == 1 ) )
+        end,
+        SwitchBackCond = function( lambda )
+            local ene = lambda:GetEnemy()
+            return ( lambda:InCombat() and !lambda:CanSee( ene ) and !lambda:IsInRange( ene, 500 ) )
+        end,
+        Cooldown = 10
+    },
+    [ "tf2_custom_caber_thrown" ] = {
+        Condition = function( lambda )
+            local ene = lambda:GetEnemy()
+            local attackDist = lambda.l_CombatAttackRange
+            if !attackDist then attackDist = ( lambda.l_HasMelee and 70 or 1000 ) end
+            return ( random( 1, 10 ) == 1 and lambda:InCombat() and lambda:CanSee( ene ) and lambda:IsInRange( ene, 1500 ) and ( lambda.l_Clip == 0 or lambda:GetIsReloading() or !lambda:IsInRange( ene, attackDist ) or random( 1, 10 ) == 1 ) )
+        end,
+        SwitchBackCond = function( lambda )
+            local ene = lambda:GetEnemy()
+            return ( lambda:InCombat() and !lambda:CanSee( ene ) and !lambda:IsInRange( ene, 500 ) )
+        end,
+        Cooldown = 12
+    },
     [ "tf2_bonk" ] = {
         Condition = function( lambda )
             local ene = lambda:GetEnemy()
