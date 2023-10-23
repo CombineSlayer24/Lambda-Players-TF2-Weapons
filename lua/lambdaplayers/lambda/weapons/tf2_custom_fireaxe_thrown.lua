@@ -116,7 +116,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                 wepent:SetNoDraw( true )
                 wepent:DrawShadow( false )
 
-                local fireaxe = ents_Create( "base_anim" )
+                local fireaxe = ents_Create( "base_gmodentity" )
                 fireaxe:SetModel( wepent:GetModel() )
                 fireaxe:SetPos( spawnPos )
                 fireaxe:SetAngles( throwAng )

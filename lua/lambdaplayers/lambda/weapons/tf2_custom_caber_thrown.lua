@@ -161,7 +161,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                 wepent:SetNoDraw( true )
                 wepent:DrawShadow( false )
 
-                local thrownCaber = ents_Create( "base_anim" )
+                local thrownCaber = ents_Create( "base_gmodentity" )
                 thrownCaber:SetModel( wepent:GetModel() )
                 thrownCaber:SetSkin( wepent:GetSkin() )
                 thrownCaber:SetPos( spawnPos )
