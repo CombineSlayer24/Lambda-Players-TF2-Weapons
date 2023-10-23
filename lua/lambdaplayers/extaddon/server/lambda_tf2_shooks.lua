@@ -1339,7 +1339,7 @@ local function OnLambdaKilled( lambda, dmginfo )
             end
 
             if index > 0 and ( isTFAnim or !isDissolving and !shouldBurn ) then
-                local animEnt = ents_Create( "base_anim" )
+                local animEnt = ents_Create( "base_gmodentity" )
                 animEnt:SetModel( lambda:GetModel() )
                 animEnt:SetPos( groundTr.HitPos )
                 animEnt:SetAngles( lambda:GetAngles() )
@@ -2025,6 +2025,17 @@ local function OnLambdaBeginMove( lambda, pos, onNavmesh )
     end
 end
 
+local function OnLambdaOnOtherKilled( lambda, victim, dmginfo )
+    if victim != lambda:GetEnemy() then return end
+    
+    for _, medic in RandomPairs( LAMBDA_TF2:GetMedigunHealers( victim ) ) do
+        if lambda:CanTarget( medic ) then
+            lambda:AttackTarget( medic )
+            return true
+        end
+    end
+end
+
 hook.Add( "LambdaOnRespawn", "LambdaTF2_OnLambdaRespawn", OnLambdaRespawn )
 hook.Add( "LambdaOnThink", "LambdaTF2_OnLambdaThink", OnLambdaThink )
 hook.Add( "LambdaOnInjured", "LambdaTF2_OnLambdaOnInjured", OnLambdaInjured )
@@ -2037,3 +2048,4 @@ hook.Add( "LambdaOnAttackTarget", "LambdaTF2_OnLambdaAttackTarget", OnLambdaAtta
 hook.Add( "LambdaCanTarget", "LambdaTF2_OnLambdaCanTarget", OnLambdaCanTarget )
 hook.Add( "LambdaOnBeginMove", "LambdaTF2_OnLambdaBeginMove", OnLambdaBeginMove )
 hook.Add( "LambdaOnPlayGestureAndWait", "LambdaTF2_OnLambdaPlayGesture", OnLambdaPlayGesture )
+hook.Add( "LambdaOnOtherKilled", "LambdaTF2_OnLambdaOnOtherKilled", OnLambdaOnOtherKilled )

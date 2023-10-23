@@ -962,7 +962,7 @@ LAMBDA_TF2.TrailList = LAMBDA_TF2.TrailList or {}
 LAMBDA_TF2.NextTrailListCheckT = CurTime()
 
 function LAMBDA_TF2:CreateSpriteTrailEntity( color, additive, startWidth, endWidth, lifeTime, texture, pos, parent )
-    local trailEnt = ents_Create( "base_anim" )
+    local trailEnt = ents_Create( "base_gmodentity" )
     if !IsValid( trailEnt ) then return end
 
     trailEnt:SetPos( pos )
@@ -1085,7 +1085,7 @@ function LAMBDA_TF2:GiveHealth( target, amount, maxHeal )
 end
 
 function LAMBDA_TF2:CreateBonemergedModel( parent, model )
-    local ent = ents_Create( "base_anim" )
+    local ent = ents_Create( "base_gmodentity" )
     ent:SetModel( model )
     ent:SetPos( parent:GetPos() )
     ent:SetAngles( parent:GetAngles() )
@@ -1181,7 +1181,7 @@ function LAMBDA_TF2:MakeBleed( ent, attacker, weapon, bleedingTime, bleedDmg, pe
         info.ExpireTime = expireTime; return
     end
 
-    local inflictor = ents_Create( "base_anim" )
+    local inflictor = ents_Create( "base_gmodentity" )
     inflictor:SetPos( ent:GetPos() )
     inflictor:SetParent( ent )
     inflictor:Spawn()
@@ -1224,7 +1224,7 @@ function LAMBDA_TF2:Burn( ent, attacker, weapon, burningTime )
         ent:SetIsBurning( true )
         ent.l_TF_FlameBurnTime = CurTime()
 
-        local inflictor = ents_Create( "base_anim" )
+        local inflictor = ents_Create( "base_gmodentity" )
         inflictor:SetPos( ent:GetPos() )
         inflictor:SetParent( ent )
         inflictor:Spawn()
@@ -1442,7 +1442,7 @@ function LAMBDA_TF2:LambdaMedigunAI( lambda )
 
             local healTarget = lambda.l_TF_Medic_HealTarget
             local targetDead = ( !IsValid( healTarget ) or !LAMBDA_TF2:IsValidCharacter( healTarget ) )
-            if targetDead or random( 1, ( ( lambda.l_TF_Medigun_ChargeReleased or healTarget.IsLambdaPlayer and ( healTarget:InCombat() or healTarget:IsPanicking() or healTarget:GetState() == "FindTarget" or healTarget.l_TF_HasEdibles or healTarget.l_TF_IsUsingItem ) ) and 350 or 100 ) ) == 1 then
+            if targetDead or random( 1, ( ( lambda.l_TF_Medigun_ChargeReleased or healTarget.IsLambdaPlayer and ( healTarget:InCombat() or healTarget:IsPanicking() or healTarget:GetState() == "FindTarget" or healTarget.l_TF_HasEdibles or healTarget.l_TF_IsUsingItem ) ) and 400 or 140 ) ) == 1 then
                 if CurTime() > lambda.l_TF_Medic_TargetSearchT then
                     lambda.l_TF_Medic_TargetSearchT = ( CurTime() + 1.0 )
 
