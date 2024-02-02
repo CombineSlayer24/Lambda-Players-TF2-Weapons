@@ -376,6 +376,8 @@ function LAMBDA_TF2:WeaponAttack( lambda, weapon, target, isCrit )
                 local hitAng = ( ( meleeTr.HitPos - lambda:GetForward() * ( hitRange and 1 or 0 ) ) - eyePos ):Angle()
                 dmginfo:SetDamageForce( hitAng:Forward() * ( damage * 300 ) * LAMBDA_TF2:GetPushScale() * ( 1 / damage * 80 ) )
 
+                target:TakeDamageInfo( dmginfo )
+
                 local hitEnt = meleeTr.Entity
                 local missed = ( !IsValid( hitEnt ) )
 
@@ -731,6 +733,8 @@ local function OnFlameThink( self )
                 dmginfo:SetDamageCustom( self.l_DmgCustom )
                 dmginfo:SetDamagePosition( ent:WorldSpaceCenter() + VectorRand( -5, 5 ) )
                 dmginfo:SetReportedPosition( attacker:GetPos() )
+
+                ent:TakeDamageInfo( dmginfo )
 
                 local onCollide = ( weapon.l_IsTFWeapon and weapon:GetWeaponAttribute( "OnFlameCollide" ) )
                 if onCollide and onCollide( self, ent, dmginfo, attacker ) == true then continue end
