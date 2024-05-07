@@ -178,11 +178,12 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                         ball.l_IsTFWeapon = true
                         ball.l_Touched = false
 
-                        local critType = self:GetCritBoostType()
+                        local critType = self:l_GetCritBoostType()
                         if wepent:CalcIsAttackCriticalHelper() then critType = TF_CRIT_FULL end
                         ball.l_CritType = critType
                 
                         ball.IsLambdaWeapon = true
+                        ball.l_IsTFBaseball = true
                         ball.l_killiconname = "lambdaplayers_weaponkillicons_tf2_sandman_baseball"
 
                         ball.Touch = OnBallTouch
