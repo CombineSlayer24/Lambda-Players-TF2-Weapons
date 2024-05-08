@@ -158,7 +158,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                 thrownCan.IsLambdaWeapon = true
                 thrownCan.l_killiconname = wepent.l_killiconname
 
-                local critType = self:GetCritBoostType()
+                local critType = self:l_GetCritBoostType()
                 if wepent:CalcIsAttackCriticalHelper() then critType = TF_CRIT_FULL end
                 thrownCan.l_CritType = critType
 
