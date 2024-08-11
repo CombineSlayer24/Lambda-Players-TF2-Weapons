@@ -1,4 +1,3 @@
-local random = math.random
 
 table.Merge( _LAMBDAPLAYERSWEAPONS, {
     tf2_knife = {
@@ -7,6 +6,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
         prettyname = "Knife",
         holdtype = "knife",
         bonemerge = true,
+        tfclass = 9,
 
         killicon = "lambdaplayers/killicons/icon_tf2_knife",
         keepdistance = 10,
@@ -43,7 +43,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
 				lambda:SetLayerPlaybackRate( attackLayer, 1.1 )
 
 				dmginfo:SetDamage( target:Health() * 2 )
-				dmginfo:SetDamageCustom( TF_DMG_CUSTOM_BACKSTAB )
+				dmginfo:SetDamageCustom( dmginfo:GetDamageCustom() + TF_DMG_CUSTOM_BACKSTAB )
 			end )
 
 			wepent:EmitSound( "weapons/draw_melee.wav", nil, nil, 0.5 )

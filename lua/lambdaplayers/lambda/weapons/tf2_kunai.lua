@@ -8,6 +8,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
         prettyname = "Conniver's Kunai",
         holdtype = "knife",
         bonemerge = true,
+        tfclass = 9,
 
         killicon = "lambdaplayers/killicons/icon_tf2_kunai",
         keepdistance = 10,
@@ -46,7 +47,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
 
                 wepent.l_TF_TargetHealth = target:Health()
 				dmginfo:SetDamage( wepent.l_TF_TargetHealth * 2 )
-				dmginfo:SetDamageCustom( TF_DMG_CUSTOM_BACKSTAB )
+				dmginfo:SetDamageCustom( dmginfo:GetDamageCustom() + TF_DMG_CUSTOM_BACKSTAB )
 			end )
 
             wepent.l_TF_TargetHealth = 0
